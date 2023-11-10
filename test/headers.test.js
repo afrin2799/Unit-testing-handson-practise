@@ -12,4 +12,11 @@ describe('loan-header', () => {
     const el=await fixture(html`<loan-header></loan-header>`);
     await el.shadowRoot.querySelector('#en-GB').click();
   });
+  it('renders correctly', async() => {
+    const el=await fixture(html`<loan-header></loan-header>`);
+    const enButton = el.shadowRoot.getElementById('en-GB');
+    const nlButton = el.shadowRoot.getElementById('nl-NL');
+    expect(enButton).to.be.ok;
+    expect(nlButton).to.be.ok;
+  });
 });
