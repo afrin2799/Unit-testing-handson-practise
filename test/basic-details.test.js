@@ -5,13 +5,13 @@ import '../src/LoanBasicDetails/BasicDetails.js';
 describe('Basic details', () => {
   // Write test cases inside this block
   // refer basic-details.js files
-  it('should trigger a "previous" action when clicked', async()=>{
+  it('checks for if back button is being called', async()=>{
     const el=await fixture(html`<basic-details></basic-details>`);
    const btn= await el.shadowRoot.querySelector('.btn-previous');
     const event= new Event('keyup',{bubbles:true});
     btn.dispatchEvent(event)
   });
-  it('should trigger a "next" action when clicked', async()=>{
+  it('checks for if next button is being called', async()=>{
     const el=await fixture(html`<basic-details></basic-details>`);
    const btn= await el.shadowRoot.querySelector('.btn-next');
     const event= new Event('keyup',{bubbles:true});
