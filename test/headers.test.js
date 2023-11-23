@@ -16,13 +16,25 @@ describe('loan-header', () => {
   it('renders correctly', async() => {
     const el=await fixture(html`<loan-header></loan-header>`);
     const enButton = el.shadowRoot.getElementById('en-GB');
-    const nlButton = el.shadowRoot.getElementById('nl-NL');
     expect(enButton).to.be.ok;
+  });
+  it('renders correctly', async() => {
+    const el=await fixture(html`<loan-header></loan-header>`);
+    const nlButton = el.shadowRoot.getElementById('nl-NL');
     expect(nlButton).to.be.ok;
   });
+  
   it('passes accessibility test for NL', async () => {
     const el = await fixture(html` <loan-header></loan-header> `);
     const myval1= await el.shadowRoot.querySelectorAll('button');
     await expect(myval1).to.be.accessible();
+  });
+  it('check for dom',async()=>{
+    const el = await fixture(html` <loan-header></loan-header> `);
+    expect(el).dom.to.equal('<loan-header></loan-header>');
+  });
+  it('check for dom accessibility',async()=>{
+    const el = await fixture(html` <loan-header></loan-header> `);
+    expect(el).dom.to.be.accessible();
   });
 });
