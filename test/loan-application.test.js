@@ -32,6 +32,7 @@ describe('LoanApplication', () => {
     el.__increment();
     expect(el.counter).to.equal(CounterVal + 1);
   });
+
 it('check for DOM', async () => {
   const el = await fixture(html`<loan-application></loan-application>`);
   expect(el).dom.to.equal('<loan-application></loan-application>');

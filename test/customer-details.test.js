@@ -15,13 +15,21 @@ describe('customer details', async() => {
 	expect(el).to.be.accessible();
   })
 
-  it('checks for handlers', async()=>{
-    await el.shadowRoot.querySelector('#nextbtn').click();
-	const myspy=Sinon.spy(el,'_toEmidetails');
-    myspy();
-    expect(myspy.called).to.be.true;
-   
-  });
+  it('h2 Accesibility test - to check for the accessibility of heading',()=>{
+    const header2=el.shadowRoot.querySelector('h2');
+    expect(header2).to.be.accessible;
+    expect(header2.innerText).to.be.equal(localize.msg('change-language:customer'));
+   })
+
+   it('checks the input type test existance of lion-input',()=>{
+	const inputFieldfirstName=el.shadowRoot.getElementById('first_name');
+    expect(inputFieldfirstName).to.exist;
+   })
+
+   it('checks the input field label - first_name',()=>{
+	const inputFieldfirstName=el.shadowRoot.getElementById('first_name');
+     expect(inputFieldfirstName.label).to.equal(localize.msg('change-language:firstname'));
+   })
   it('should display the form fields',()=>{
 		const firstName=el.shadowRoot.querySelector('#first_name');
 		const lastName=el.shadowRoot.querySelector('#last_name');

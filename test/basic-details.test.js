@@ -36,30 +36,19 @@ describe('Basic details', () => {
     const errorMessage = amount._getMessage();
     expect(errorMessage).to.not.equal();
 });
-  xit('checks for if back button is being called', async()=>{
-    const el=await fixture(html`<basic-details></basic-details>`);
-   const btn= await el.shadowRoot.querySelector('.btn-previous');
-    const myspy=Sinon.spy(el,'_toDashboard');
-   btn[0].click();
-    expect(myspy.called).to.be.true;
-  });
-  xit('checks for if home button is being called ', async()=>{
-    const el=await fixture(html`<loan-error></loan-error>`);
-  const btn = el.shadowRoot.querySelector('.home-btn');
-    const myspy = sinon.spy(el, '_toHome');
-    btn[0].click();
-    expect(myspy.called).to.be.true;
-  }); 
-  
-  xit('checks for if next button is being called', async()=>{
-    const el=await fixture(html`<basic-details></basic-details>`);
-   const btn= await el.shadowRoot.querySelector('.btn-next');
-    const event= new Event('keyup',{bubbles:true});
-    btn.dispatchEvent(event);
-    const myspy=Sinon.spy(el,'_captureDetails');
+xit('checks lionButton function call -  _toDashboard',async()=>{
+  const el=await fixture(html`<basic-details></basic-details>`);
+  const myspy=Sinon.spy(el,'_toDashboard');
+  const btn=el.shadowRoot.querySelectorAll('lion-button');
+  btn[0].click();
+  expect(myspy.called).to.be.true;
+})
 
-    expect(myspy.called).to.be.true;
-  });
-
-  
+xit('checks lionButton function call -  _captureDetails',async()=>{
+  const el=await fixture(html`<basic-details></basic-details>`);
+  const myspy=Sinon.spy(el,'_captureDetails');
+  const btn=el.shadowRoot.querySelectorAll('lion-button');
+  btn[1].click();
+  expect(myspy.called).to.be.true;
+})
 });
