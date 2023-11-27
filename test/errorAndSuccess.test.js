@@ -4,6 +4,7 @@ import '../src/SuccessAndError/Success.js';
 import '../src/SuccessAndError/Error.js';
 import Sinon from 'sinon';
 import sinon from 'sinon';
+import { localize } from '@lion/localize';
 import { Router } from '@vaadin/router';
 
 describe('Success screen ', async() => {
@@ -17,11 +18,23 @@ describe('Success screen ', async() => {
     myspy();
     expect(myspy.called).to.be.true;
   }); 
+  it('checks p tag Accesibility test ',async()=>{
+    const el=await fixture(html`<loan-success></loan-success>`);
+    const pTag=el.shadowRoot.querySelector('p');
+    expect(pTag).to.be.accessible;
+    expect(pTag.innerText).to.be.equal(localize.msg('change-language:scsDesc'));
+   })
 });
 
 
 describe('error screen', () => {
   // Write test cases inside this block
+  it('checks p tag Accesibility test ',async()=>{
+    const el=await fixture(html`<loan-success></loan-success>`);
+    const pTag=el.shadowRoot.querySelector('p');
+    expect(pTag).to.be.accessible;
+    expect(pTag.innerText).to.be.equal(localize.msg('change-language:errDesc'));
+   })
   it('checks the rendering',async()=>{
     const el=await fixture(html`<loan-error></loan-error>`);
     expect(el).to.not.be.undefined;

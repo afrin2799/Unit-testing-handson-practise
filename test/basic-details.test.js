@@ -4,6 +4,7 @@ import '../src/LoanBasicDetails/BasicDetails.js';
 import Sinon from 'sinon';
 import { Router } from '@vaadin/router';
 import { Required } from '@lion/form-core';
+import { localize } from '@lion/localize';
 
 describe('Basic details', () => {
   // Write test cases inside this block
@@ -36,19 +37,10 @@ describe('Basic details', () => {
     const errorMessage = amount._getMessage();
     expect(errorMessage).to.not.equal();
 });
-xit('checks lionButton function call -  _toDashboard',async()=>{
+it('should check for the label of amount field',async()=>{
   const el=await fixture(html`<basic-details></basic-details>`);
-  const myspy=Sinon.spy(el,'_toDashboard');
-  const btn=el.shadowRoot.querySelectorAll('lion-button');
-  btn[0].click();
-  expect(myspy.called).to.be.true;
+  const amtField=el.shadowRoot.getElementById('amount');
+  expect(amtField.label).to.equal(localize.msg('change-language:monthlysalary'))
 })
 
-xit('checks lionButton function call -  _captureDetails',async()=>{
-  const el=await fixture(html`<basic-details></basic-details>`);
-  const myspy=Sinon.spy(el,'_captureDetails');
-  const btn=el.shadowRoot.querySelectorAll('lion-button');
-  btn[1].click();
-  expect(myspy.called).to.be.true;
-})
 });
